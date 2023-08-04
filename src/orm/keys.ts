@@ -1,2 +1,2 @@
 export const CONNECTION_STRING = 'CONNECTION_STRING';
-export const NEST_ORM_DB = 'CONNECTION_STRING';
+export const NEST_ORM_DB = 'NEST_ORM_DB';
