@@ -1,8 +1,9 @@
-import { Module } from '@nestjs/common';
+import { Global, Module } from '@nestjs/common';
 import { CONNECTION_STRING, NEST_ORM_DB } from './orm/keys';
 import { createDb } from './orm/db';
 
 @Module({})
+@Global()
 export class NestByteOrmModule {
   static register<TSchema extends Record<string, unknown>>(
     connectionString: string,
