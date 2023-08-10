@@ -1,14 +1,13 @@
-import { Global, Module } from '@nestjs/common';
+import { DynamicModule, Module } from '@nestjs/common';
 import { CONNECTION_STRING, NEST_ORM_DB } from './orm/keys';
 import { createDb } from './orm/db';
 
 @Module({})
-@Global()
 export class NestByteOrmModule {
   static register<TSchema extends Record<string, unknown>>(
     connectionString: string,
     schema: TSchema,
-  ) {
+  ): DynamicModule {
     return {
       module: NestByteOrmModule,
       providers: [
@@ -23,7 +22,8 @@ export class NestByteOrmModule {
           },
         },
       ],
-      exports: [NEST_ORM_DB],
+      exports: [NEST_ORM_DB, CONNECTION_STRING],
+      global: true,
     };
   }
 }
